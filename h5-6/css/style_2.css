@@ -1,0 +1,48 @@
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+    margin: 0;
+}
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.basic-info h3,
+.basic-info p,
+.basic-info li,
+.contact-info h3,
+.contact-info p,
+.contact-info li {
+    display: inline;
+}
+
+.basic-info p,
+.contact-info p {
+    padding-left: 1em;
+    padding-right: 4em;
+}
+
+h3,
+p {
+    margin: 0;
+}
+
+li {
+    margin-bottom: 1em;
+}
+h1 {
+    float: left;
+    box-sizing: border-box;
+    width: 12rem;
+    height: 100vh;
+    padding-top: 4rem;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    background-color: #65a5fa;
+}
+div.content {
+    padding: 1em;
+    padding-left: 2em;
+    margin-left: 12rem;
+}

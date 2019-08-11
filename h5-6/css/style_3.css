@@ -1,0 +1,65 @@
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+}
+ul {
+    display: inline-block;
+    list-style-type: none;
+    padding: 1em 1em 0;
+    margin: 0;
+    vertical-align: top;
+}
+
+.basic-info h3,
+.basic-info p,
+.basic-info li,
+.contact-info h3,
+.contact-info p,
+.contact-info li {
+    display: inline;
+}
+
+.basic-info p,
+.contact-info p {
+    padding-left: 1em;
+    padding-right: 4em;
+}
+
+h3,
+p {
+    margin: 0;
+}
+
+li {
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 1em;
+    color: #fff;
+    background-color: #858585;
+}
+
+body {
+    margin: 0;
+}
+
+section {
+    float: left;
+    width: 100%;
+}
+
+section h2 {
+    display: inline-block;
+    padding: 2.5em;
+    margin: 0;
+    text-align: center;
+    background-color: #d6d6d6;
+}
+section::after {
+    display: block;
+    content: " ";
+    height: 2px;
+    background-color: #fff;
+    border-bottom: 2px solid #d9d9d9;
+}
