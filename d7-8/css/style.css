@@ -90,7 +90,7 @@ main p {
     flex: 1 1;
     text-align: center;
     white-space: nowrap;
-    padding: 3em 4.5em;
+    padding: 80px;
     border: 1px solid #dedede;
     margin: .25em;
 }
