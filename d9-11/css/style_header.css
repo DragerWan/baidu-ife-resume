@@ -71,13 +71,15 @@ header form input {
     margin: 0 1em;
     padding: 1.2em 1.4em;
     font-family: inherit;
-    outline-color: #fff;
+    outline-style: none;
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 2px;
     color: inherit;
 }
-
+header form input:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+}
 /*header form input:focus {
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 2px;
@@ -88,7 +90,7 @@ header form button {
     margin: 0 1em;
     font-family: inherit;
     text-transform: uppercase;
-    outline-color: #fff;
+    outline-style: none;
     background-color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 2px;
