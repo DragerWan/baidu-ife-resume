@@ -1,8 +1,9 @@
 body {
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 header {
-    height: 6rem;
+    height: 5rem;
     background-color: #333;
 }
 
@@ -22,7 +23,7 @@ header div.content {
 header h1 {
     flex: 1 1 auto;
     margin: 0;
-    line-height: 6rem;
+    line-height: 5rem;
 }
 header ul {
     flex: 0 0 auto;
@@ -59,11 +60,52 @@ nav {
 }
 nav div.content {
     display: flex;
+    position: relative;
+    top: 1px;
     
 }
 
 nav a {
     text-decoration: none;
-    padding: 2em;
+    padding: 1em 1.5em;
     border: 1px solid #dedede;
+    border-radius: 1em 1em 0 0;
+    background-color: #f0f0f0;
+}
+
+nav a.active {
+    border-bottom-color: #fff;
+    background-color: #fff;
+}
+
+
+main div.content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-top: .25em;
+}
+
+main p {
+    flex: 1 1;
+    text-align: center;
+    white-space: nowrap;
+    padding: 3em 4.5em;
+    border: 1px solid #dedede;
+    margin: .25em;
+}
+
+footer {
+    height: 6rem;
+    background-color: #464646;
+}
+
+footer p {
+    padding-top: 1em;
+    text-align: center;
+    color: #fff;
+}
+
+a:visited {
+    color: inherit;
 }
