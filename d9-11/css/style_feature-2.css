@@ -1,0 +1,18 @@
+section.feature-2 {
+    padding:0;
+    margin:0;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    background-image: url(../assets/feature-2/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-clip: border-box;
+    background-size: cover;
+}
+
+section.feature-2 .content{
+    padding: 4em 0;
+    width: 970px;
+    margin: 0 auto;
+    color: inherit;
+}

@@ -99,3 +99,9 @@ header form button {
 header form button:hover {
     background-color: #eee;
 }
+
+section h2 {
+    font-weight: 1;
+    font-size: 2.5em;
+    line-height: 1.2;
+}
