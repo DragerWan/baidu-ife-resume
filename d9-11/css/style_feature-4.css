@@ -1,0 +1,59 @@
+
+section.feature-4 {
+    padding: 6em 0;
+    width: 970px;
+    margin: 0 auto;
+    color: inherit;
+    font-family: Montserrat, sans-serif;
+    overflow: hidden;
+}
+
+section.feature-4 article {
+    width: 20em;
+    overflow: hidden;
+    margin-right: 0;
+    margin-left: auto;
+    padding-top: 4em;
+    text-align: left;
+}
+
+section.feature-4 article:nth-of-type(odd) {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+section.feature-4 article:nth-of-type(even) {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+section.feature-4  p {
+    font-size: 0.9em;
+    line-height: 1.75;
+    font-weight: 1;
+    opacity: 0.7;
+    margin-top: 1.5em;
+    margin-bottom: 0;
+}
+
+section.feature-4 h3 {
+    margin: 0 0 1.6em;
+    line-height: 1.6;
+    font-weight: 700;
+}
+
+section.feature-4 img {
+    margin-bottom: 4em;
+}
+
+section.feature-4 img:last-of-type {
+    margin-bottom: 0;
+}
+
+section.feature-4 img:nth-of-type(odd) {
+    float: left;
+}
+
+section.feature-4 img:nth-of-type(even) {
+    float: right;
+}

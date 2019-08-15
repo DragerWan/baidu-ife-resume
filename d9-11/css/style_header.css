@@ -1,6 +1,13 @@
 body {
     margin: 0;
 }
+
+hr {
+    border-width: 0;
+    background-color: #000;
+    opacity: 0.1;
+    height: 1px;
+}
 header {
     background-image: url(../assets/header/background.jpg);
     font-family: Montserrat, sans-serif;
