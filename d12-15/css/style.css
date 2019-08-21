@@ -1,0 +1,291 @@
+html  {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Proxima Nova", sans-serif;
+    display: flex;
+    font-size: 0.9em;
+    height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    background-color: #1d2531;
+    flex: 0 0 100px;
+}
+
+nav ul {
+    position: fixed;
+    width: 100px;
+}
+
+nav ul h1 {
+    text-align: center;
+    margin: 1em 0;
+}
+
+nav > div {
+    display: flex;
+    position: fixed;
+    justify-content: space-evenly;
+    width: 100px;
+    margin-bottom: 1em;
+    bottom: 0;
+    left: 0;
+}
+
+aside {
+    box-sizing: border-box;
+    flex: 0 0 250px;
+    background-color: #222c3c;
+    color: #b7c0cd;
+    padding:30px;
+}
+
+aside div.title {
+    display: flex;
+    justify-content: space-between;
+    color: #5b6779;
+    text-transform: uppercase;
+}
+
+aside h2 {
+    font-size: 1em;
+}
+
+aside h1 {
+    font-size: .86em;
+}
+
+aside li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    line-height: 1.6;
+}
+
+aside label {
+    color: #fff;
+    font-weight: 700;
+    background-image: linear-gradient(to bottom, #2ea1f8, #1991eb);
+    border-radius: .8em;
+    padding: 0 .7em;
+}
+
+aside label.warning {
+    background-image: linear-gradient(to bottom, #f45438, #cb270a);
+}
+
+aside li.active {
+    color: #fff;
+
+}
+
+aside > div {
+    position: fixed;
+    box-sizing: border-box;
+    width: 250px;
+    padding: 1em 30px;
+    bottom: 0;
+    left: 100px;
+}
+
+aside > div h1 {
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    color: #fff;
+}
+
+aside > div span {
+    font-weight: 400;
+}
+
+aside > div em {
+    font-weight: 700;
+    font-style: normal;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    border-bottom: 1px solid #e6e9ec;
+}
+
+.header div {
+    flex: 0 0;
+}
+
+.header .person h2 {
+    color: #2399f1;
+}
+
+div.person {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.person > img {
+    flex: 0 0;
+    margin-right: 1em;
+}
+
+div.person > label img {
+    flex: 0 0;
+    margin-left: 1em;
+}
+
+div.person > div {
+    flex: 1 1;
+}
+
+div.person > div h2 {
+    font-size: 1.14em;
+    color: #585d68;
+}
+
+div.person > div h3 {
+    font-size: 1em;
+    color: #b5b5b5;
+}
+
+div.person label {
+    flex: 0 0;
+}
+
+.main_content {
+    display: flex;
+}
+
+.main_content .user_list {
+    flex: 0 0 400px;
+    border-right: 1px solid #e6e9ec;
+}
+
+.user_list .top {
+    padding: 1em 2em;
+    position: relative;
+    border-bottom: 1px solid #e6e9ec;
+}
+
+.user_list .top input {
+    font-size: 1em;
+    font-family: inherit;
+    width: 100%;
+    line-height: 2.5;
+    padding: 0 2.5em 0 1em;
+    box-sizing: border-box;
+    border: 1px solid #e5e8ee;
+    border-radius: 4px;
+}
+
+.user_list .top img {
+    position: absolute;
+    right: 3em;
+    top: 1.75em;
+}
+
+.user_list li {
+    padding: 1em 2em;
+    border-bottom: 1px solid #e6e9ec;
+}
+
+.user_list p {
+    color: #585d68;
+    line-height: 1.36;
+    margin-top: 1em;
+}
+
+.user_list li > div:last-child {
+    display: flex;
+    align-items: center;
+}
+
+.user_list label {
+    color: #7f8fa4;
+    font-weight: 700;
+    white-space: nowrap;
+    margin-left: 1em;
+}
+
+.user_list  label.info {
+    color: #fff;
+    background-image: linear-gradient(to bottom, #2ea1f8, #1991eb);
+    border-radius: .8em;
+    padding: 0 .5em;
+    line-height: 1.6;
+}
+
+.message_list .top {
+    display: flex;
+    height: 37px;
+    padding: 1em 2em;
+    position: relative;
+    border-bottom: 1px solid #e6e9ec;
+    align-items: center;
+}
+
+.message_list .top h2{
+    font-size: 1.29em;
+    flex: 1 1;
+}
+
+.message_list .top div:last-child{
+    display: flex;
+    align-items: center;
+}
+
+.message_list .top > div{
+    padding: 0 1.5em;
+}
+
+.message_list .top > div:not(:last-child){
+    border-right: 1px solid #e6e9ec;
+}
+
+.button_group {
+    display: flex;
+}
+.button_group button {
+    padding: 0.5em 0.7em;
+    border-left: none;
+    border-right: none;
+    border-style: none;
+    border-top: 1px solid #ced0da;
+    border-bottom: 1px solid #ced0da;
+    border-right: 1px solid #ced0da;
+    background-image: linear-gradient(to bottom, #fff, #f1f3f7);
+}
+
+.button_group button:first-of-type {
+    border-left: 1px solid #ced0da;
+    border-radius: 4px 0 0 4px;
+}
+
+.button_group button:last-of-type {
+    border-radius: 0 4px 4px 0;
+}
+
+.message_list .top span:not(.button_group){
+    padding-right: 1em;
+}
