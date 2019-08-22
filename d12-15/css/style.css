@@ -406,10 +406,6 @@ div.person label {
     margin-top: 1em;
 }
 
-.message_list div.content img{
-    margin-right: .7em;
-}
-
 .divider {
     display: flex;
     align-items: center;
@@ -460,4 +456,26 @@ div.person label {
     border: 1px solid #ced0da;
     border-left: none;
     border-radius: 0 4px 4px 0;
+}
+
+.message_list div.image {
+    display: inline-block;
+    position: relative;
+    margin: 0 .7em 0 0;
+}
+
+.message_list div.image:hover::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-mask-image: url(../assets/main_picture_sky.png);
+            mask-image: url(../assets/main_picture_sky.png);
+    -webkit-mask-mode: alpha;
+            mask-mode: alpha;
+    background-image: url(../assets/main_zoom_in.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
