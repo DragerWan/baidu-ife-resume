@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+    <style>
+        #face {
+            width: 480px;
+            height: 478px;
+            padding: 0;
+            margin: 200px auto;
+            background-image: url(http://ife.baidu.com/2016/static/img/erik_ce204002.jpg);
+            background-repeat: no-repeat;
+            background-position: 0 -2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="face">
+
+    </div>
+
+    <script>
+        var pics = 17;
+        var height = 480;
+        var currentIndex = 0;
+        var increase = true;
+        var face = document.getElementById("face");
+        function changePosition() {
+            console.log("change");
+            if (increase) {
+                currentIndex++;
+                if (currentIndex == pics - 1) {
+                    increase = false;
+                }
+            } else {
+                currentIndex--;
+                if (currentIndex == 0) {
+                    increase = true;
+                }
+            }
+
+            var newPositionY = -currentIndex * height - 2 + "px";
+            console.log("newPositionY", newPositionY);
+            face.style.backgroundPositionY = newPositionY;
+        }
+        setInterval(changePosition, 50);
+    </script>
+</body>
+
+</html>

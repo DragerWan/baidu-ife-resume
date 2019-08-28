@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Button</title>
+    <script>
+        function printValue() {
+            console.log(document.getElementById("name").value);
+        }
+        function clearValue() {
+            document.getElementById("name").value = "";
+        }
+        function onKeyPress(event) {
+            if (event.key === "Enter") {
+                printValue();
+            } else if (event.key === "Escape") {
+                clearValue();
+            }
+        }
+        window.onload = () => {
+            document.getElementById("submit-btn").onclick = printValue;
+            document.getElementById("name").onkeypress = onKeyPress;
+        };
+
+    </script>
+</head>
+
+<body>
+    <input id="name" type="text">
+    <button id="submit-btn">Submit</button>
+</body>
+
+</html>
