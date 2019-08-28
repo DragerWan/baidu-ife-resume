@@ -9,8 +9,8 @@
 - [d9-11 来做一个漂亮的网站](https://dragerwan.github.io/baidu-ife-resume/d9-11/index.html)
 - [d12-15 复杂页面实现](https://dragerwan.github.io/baidu-ife-resume/d12-15/index.html)
 - [d20-21 让你和页面对话]
-   1. [输入提交](https://dragerwan.github.io/baidu-ife-resume/d120-21/event.html)
-   1. [显示隐藏](https://dragerwan.github.io/baidu-ife-resume/d120-21/style.html)
-   1. [获取颜色](https://dragerwan.github.io/baidu-ife-resume/d120-21/list.html)
-   1. [淡入淡出](https://dragerwan.github.io/baidu-ife-resume/d120-21/timeout.html)
-   1. [笑脸动画](https://dragerwan.github.io/baidu-ife-resume/d120-21/face.html)
+   1. [输入提交](https://dragerwan.github.io/baidu-ife-resume/d20-21/event.html)
+   1. [显示隐藏](https://dragerwan.github.io/baidu-ife-resume/d20-21/style.html)
+   1. [获取颜色](https://dragerwan.github.io/baidu-ife-resume/d20-21/list.html)
+   1. [淡入淡出](https://dragerwan.github.io/baidu-ife-resume/d20-21/timeout.html)
+   1. [笑脸动画](https://dragerwan.github.io/baidu-ife-resume/d20-21/face.html)
