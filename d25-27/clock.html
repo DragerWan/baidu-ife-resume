@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>clock</title>
+    <script>
+        function startTime(){
+            var time = new Date();
+            var year = time.getFullYear();
+            var month = checkTime(time.getMonth() + 1);
+            var date = checkTime(time.getDate());
+            var hour = checkTime(time.getHours());
+            var minute = checkTime(time.getMinutes());
+            var second = checkTime(time.getSeconds());
+
+            document.getElementById("time-1").textContent =  getDate1(time) + " " + getDay1(time) + " " + getTime1(time);
+            document.getElementById("time-2").textContent = getDate2(time) + " " + getDay2(time) + " " + getTime2(time);
+            setTimeout(startTime, 1000);
+        }
+        function getDate1(time){
+            return time.getFullYear() + " 年 " + checkTime(time.getMonth() + 1) + " 月 " + checkTime(time.getDate()) + " 日";
+        }
+        function getDate2(time){
+            return time.getFullYear() + "-" + checkTime(time.getMonth() + 1) + "-" + checkTime(time.getDate()) + "";
+        }
+        function getTime1(time){
+            return checkTime(time.getHours()) + ":" + checkTime(time.getMinutes()) + ":" + checkTime(time.getSeconds());
+        }
+        function getTime2(time){
+            var hour = time.getHours();
+            var post = " AM";
+            if(time.getHours()>=12){
+                hour -= 12;
+                post = " PM";
+            }
+            return checkTime(hour) + ":" + checkTime(time.getMinutes()) + ":" + checkTime(time.getSeconds()) + post;
+        }
+        function checkTime(timeValue){
+            if(timeValue < 10){
+                return "0" + timeValue;
+            }
+            return timeValue;
+        }
+        function getDay1(time){
+            var dayArr = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期七"];
+            return dayArr[time.getDay()];
+        }
+        function getDay2(time){
+            var dayArr = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+            return dayArr[time.getDay()];
+        }
+        window.onload = startTime;
+
+    </script>
+</head>
+
+<body>
+    <p id="time-1"></p>
+    <p id="time-2"></p>
+</body>
+
+</html>
