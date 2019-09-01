@@ -9,51 +9,128 @@
 
 <body>
     <select id="year-select">
-        <option value="2000">2000</option>
-        <option value="2001">2001</option>
-        <option value="2002">2002</option>
-        ……
-        <option value="2032">2002</option>
     </select>
 
     <select id="month-select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        ……
-        <option value="12">12</option>
     </select>
 
     <select id="day-select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        ……
-        <option value="31">31</option>
     </select>
 
     <select id="hour-select">
-        <option value="0">00</option>
-        <option value="1">01</option>
-        ……
-        <option value="23">23</option>
     </select>
 
-    <select id="minite-select">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        ……
-        <option>59</option>
+    <select id="minute-select">
     </select>
 
     <select id="second-select">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        ……
-        <option>59</option>
     </select>
 
     <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
     <script>
+        init();
+        let dateSet = new Date();
+        function getDateSet() {
+            let year = getIntValue("year");
+            let month = getIntValue("month") - 1;
+            let day = getIntValue("day");
+            let hour = getIntValue("hour");
+            let minute = getIntValue("minute");
+            let second = getIntValue("second");
+            dateSet = new Date(year, month, day, hour, minute, second);
+            displayDate();
+        };
+        function getIntValue(name) {
+            let select = document.getElementById(name + "-select");
+            let value = select.options[select.selectedIndex].value;
+            return parseInt(value);
+        }
+        let selects = document.getElementsByTagName("select");
+        for (let i = 0; i < selects.length; i++) {
+            selects[i].onchange = getDateSet;
+        }
+        getDateSet();
+        function display() {
+            let dateNow = new Date();
+            let duration = Math.floor(Math.abs(dateSet.getTime() - dateNow.getTime()) / 1000);//s
+            if (dateSet > dateNow) {
+                document.getElementById("result-wrapper").textContent = "现在距离 " + displayDate() + " 还有 " + displayDuration(duration);
+            } else {
+                document.getElementById("result-wrapper").textContent = "现在距离 " + displayDate() + " 已经过去 " + displayDuration(duration);
+            }
 
+        };
+        setInterval(display, 1000);
+        function displayDate() {
+            return getDate(dateSet) + getDay(dateSet) + " " + getTime(dateSet);
+        }
+        function displayDuration(seconds) {
+            return Math.floor(seconds / 60 / 60 / 24) + " 天" +
+                Math.floor(seconds % (60 * 60 * 24) / 60 / 60) + " 小时" +
+                Math.floor(seconds % (60 * 60) / 60) + " 分" +
+                Math.floor(seconds % (60)) + " 秒";
+        }
+        function getDate(time) {
+            return time.getFullYear() + " 年 " + checkTime(time.getMonth() + 1) + " 月 " + checkTime(time.getDate()) + " 日";
+        }
+        function getTime(time) {
+            return checkTime(time.getHours()) + ":" + checkTime(time.getMinutes()) + ":" + checkTime(time.getSeconds());
+        }
+        function getDay(time) {
+            var dayArr = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期七"];
+            return dayArr[time.getDay()];
+        }
+        function checkTime(timeValue) {
+            if (timeValue < 10) {
+                return "0" + timeValue;
+            }
+            return timeValue;
+        }
+        function init(){
+            let yearSelect = document.getElementById("year-select");
+            for(let i = 2000; i < 2033; i ++){
+                let option = document.createElement("option");
+                option.value = i.toString();
+                option.text = i.toString();
+                yearSelect.appendChild(option);
+            }
+            let monthSelect = document.getElementById("month-select");
+            for(let i = 1; i < 13; i ++){
+                let option = document.createElement("option");
+                option.value = i.toString();
+                option.text = i.toString();
+                monthSelect.appendChild(option);
+            }
+            let daySelect = document.getElementById("day-select");
+            for(let i = 1; i < 13; i ++){
+                let option = document.createElement("option");
+                option.value = i.toString();
+                option.text = i.toString();
+                daySelect.appendChild(option);
+            }
+            let hourSelect = document.getElementById("hour-select");
+            for(let i = 0; i < 24; i ++){
+                let option = document.createElement("option");
+                option.value = i.toString();
+                option.text = checkTime(i).toString();
+                hourSelect.appendChild(option);
+            }
+            let minuteSelect = document.getElementById("minute-select");
+            for(let i = 0; i < 60; i ++){
+                let option = document.createElement("option");
+                option.value = i.toString();
+                option.text = i.toString();
+                minuteSelect.appendChild(option);
+            }
+            let secondSelect = document.getElementById("second-select");
+            for(let i = 0; i < 60; i ++){
+                let option = document.createElement("option");
+                option.value = i.toString();
+                option.text = i.toString();
+                secondSelect.appendChild(option);
+            }
+        }
+        
     </script>
 </body>
 

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>email</title>
+    <style>
+        div.wrapper {
+            width: 200px;
+            position: relative;
+            padding: 0;
+        }
+
+        div.wrapper input {
+            width: 100%;
+            height: 2rem;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+        }
+
+        ul {
+            position: absolute;
+            box-sizing: border-box;
+            min-width: 100%;
+            top: calc(2rem - 1px);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #aaa;
+            display: none;
+        }
+
+
+
+        li.selected {
+            background-color: rgb(255, 201, 100);
+        }
+
+        li:hover {
+            background-color: rgb(100, 177, 255);
+        }
+
+        li {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text" autofocus>
+        <ul id="email-sug-wrapper" class="email-sug">
+        </ul>
+    </div>
+    <script>
+        var selectedIndex = 0;
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        var sug = document.getElementById("email-sug-wrapper");
+        function onChange(event) {
+            var input = event.target;
+            var inputValue = getInputValue(input);
+            if (inputValue) {
+                getList(inputValue);
+                showHide(true);
+            } else {
+                showHide(false);
+            }
+
+        }
+        document.getElementById("email-input").oninput = onChange;
+        sug.onclick = click;
+        function getInputValue(element) {
+            return element.value.trim();
+        }
+        function getList(inputValue) {
+            if (inputValue) {
+                sug.innerHTML = "";
+                let inputPostfixIndex = inputValue.indexOf("@");
+                let inputInfo = inputValue;
+                let inputPostfix = "";
+                if (inputPostfixIndex > 0) {
+                    inputPostfix = inputValue.substr(inputPostfixIndex);
+                    inputInfo = inputValue.substr(0, inputPostfixIndex);
+                }
+                for (let i = 0; i < postfixList.length; i++) {
+                    if (inputPostfix) {
+                        if (("@" + postfixList[i]).indexOf(inputPostfix) == 0) {
+                            let li = document.createElement("li");
+                            let text = inputInfo + "@" + postfixList[i];
+                            let textNode = document.createTextNode(text);
+                            li.appendChild(textNode);
+                            sug.appendChild(li);
+                        }
+                    } else {
+                        let li = document.createElement("li");
+                        let text = inputInfo + "@" + postfixList[i];
+                        let textNode = document.createTextNode(text);
+                        li.appendChild(textNode);
+                        sug.appendChild(li);
+                    }
+                }
+                if (sug.childNodes.length < 1) {
+                    for (let i = 0; i < postfixList.length; i++) {
+                        let li = document.createElement("li");
+                        let text = inputInfo + "@" + postfixList[i];
+                        let textNode = document.createTextNode(text);
+                        li.appendChild(textNode);
+                        sug.appendChild(li);
+                    }
+                }
+                selectedIndex = 0;
+                sug.childNodes[selectedIndex].className = "selected";
+            }
+        }
+        function showHide(show) {
+            if (show) {
+                sug.style.display = "initial";
+            } else {
+                sug.style.display = "none";
+            }
+        }
+        function click(event) {
+            event = event || window.event;
+            var target = event.target || event.srcElement;
+            if (target.nodeName.toLowerCase() == "li") {
+                document.getElementById("email-input").value = target.textContent;
+                document.getElementById("email-input").focus();
+                showHide(false);
+            }
+        }
+
+        function keyHandler(event) {
+            switch (event.keyCode) {
+                case 38://up
+                    sug.childNodes[selectedIndex].className = "";
+                    selectedIndex--;
+                    if (selectedIndex < 0) {
+                        selectedIndex = sug.childNodes.length - 1;
+                    }
+                    sug.childNodes[selectedIndex].className = "selected";
+                    break;
+                case 40://down
+                    sug.childNodes[selectedIndex].className = "";
+                    selectedIndex++;
+                    if (selectedIndex >= sug.childNodes.length) {
+                        selectedIndex = 0;
+                    }
+                    sug.childNodes[selectedIndex].className = "selected";
+                    break;
+                case 13://enter
+                    let selectedElement = sug.childNodes[selectedIndex];
+                    document.getElementById("email-input").value = selectedElement.textContent;
+                    showHide(false);
+                    break;
+                case 27://enter
+                    document.getElementById("email-input").select();
+                    break;
+                default:
+                    break;
+            }
+        }
+        window.addEventListener("keyup", keyHandler);
+
+    </script>
+</body>
+
+</html>
