@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Seler</title>
+    <script src="./data.js"></script>
+    <style>
+        table {
+            border: 2px solid gray;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #bbb;
+            padding: .5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="region-radio-wrapper"></div>
+    <div id="product-radio-wrapper"></div>
+    <div id="table-wrapper">
+    </div>
+
+    <script>
+        let regionRadioWrapper = document.querySelector("#region-radio-wrapper");
+        let productRadioWrapper = document.querySelector("#product-radio-wrapper");
+        let tableWrapper = document.querySelector("#table-wrapper");
+
+        function initOptions() {
+            let regions = [];
+            let products = [];
+            for (let i = 0; i < sourceData.length; i++) {
+                if (regions.map(item=>item.text).indexOf(sourceData[i].region) < 0) {
+                    regions.push({
+                         text: sourceData[i].region,
+                          value: sourceData[i].region 
+                        });
+                }
+                if (products.map(item=>item.text).indexOf(sourceData[i].product) < 0) {
+                    products.push({
+                         text: sourceData[i].product,
+                          value: sourceData[i].product 
+                        });
+                }
+            }
+            createCheckBoxGroup(regionRadioWrapper, regions);
+            createCheckBoxGroup(productRadioWrapper, products);
+        }
+        function createCheckBoxGroup(wrapper, data) {
+            let checkAll = createCheckBoxWithLabel(wrapper.id + "all", "all", "all", "全选");
+            wrapper.innerHTML = "";
+            wrapper.appendChild(checkAll);
+            data.forEach((item, i) => {
+                let checkBox = createCheckBoxWithLabel(wrapper.id + i, "one", item.value, item.text);
+                wrapper.appendChild(checkBox);
+            })
+            wrapper.childNodes[1].firstChild.checked = true;
+            wrapper.onclick = function (event) {
+                let target = event.target;
+                console.log("target", target);
+                if (target.nodeName.toLowerCase() === "input") {
+                    let checkboxs = wrapper.childNodes;
+                    if (target.getAttribute("checkbox-type") === "all") {
+                        checkboxs.forEach(item => {
+                            item.firstChild.checked = true;
+                        })
+                    } else {
+                        if (!target.checked) {
+                            let hasChecked = false;
+                            checkboxs.forEach(item => {
+                                if(item.firstChild.checked){
+                                    hasChecked =true;
+                                }
+                            });
+                            if(!hasChecked){
+                                target.checked = true;
+                            } else {
+                                checkboxs[0].firstChild.checked = false;
+                            }
+                        } else {
+                            let allChecked = true;
+                            checkboxs.forEach(item => {
+                                if(item.firstChild.getAttribute("checkbox-type") !== "all" && !item.firstChild.checked){
+                                    allChecked =false;
+                                }
+                            });
+                            if(allChecked){
+                                checkboxs[0].firstChild.checked = true;
+                            }
+                        }
+                    }
+                }
+                updateTable();
+            }
+
+        }
+
+        function createCheckBoxWithLabel(id, type, value, text) {
+            let label = document.createElement("label");
+            let checkBox = document.createElement('input');
+            checkBox.type = "checkbox";
+            checkBox.value = value;
+            checkBox.id = id;
+            checkBox.setAttribute("checkbox-type", type);
+            label.appendChild(checkBox);
+            label.appendChild(document.createTextNode(text));
+            label.htmlFor = id;
+            return label;
+        }
+
+        function updateTable() {
+            let regions = [];
+            let products = [];
+            regionRadioWrapper.childNodes.forEach(item=>{
+                if(item.firstChild.getAttribute("checkbox-type") === "one" && item.firstChild.checked){
+                    regions.push(item.firstChild.value);
+                }
+            });
+            productRadioWrapper.childNodes.forEach(item=>{
+                if(item.firstChild.getAttribute("checkbox-type") === "one" && item.firstChild.checked){
+                    products.push(item.firstChild.value);
+                }
+            });
+            let data = sourceData.filter(item => (regions.indexOf(item.region) >= 0 && products.indexOf(item.product) >= 0));
+            renderTable(data);
+        }
+
+        function renderTable(data) {
+            console.log(data);
+            let table = document.createElement("table");
+            table.innerHTML = "" +
+                "<tr>" +
+                "<th>商品</th><th>地区</th>" +
+                "<th>1月</th><th>2月</th><th>3月</th><th>4月</th><th>5月</th><th>6月</th>" +
+                "<th>7月</th><th>8月</th><th>9月</th><th>10月</th><th>11月</th><th>12月</th>" +
+                "</tr>" +
+                "";
+            data.forEach(item => {
+                let row = document.createElement("tr");
+                let product = document.createElement("td");
+                let region = document.createElement("td");
+                product.textContent = item.product;
+                region.textContent = item.region;
+                row.appendChild(product);
+                row.appendChild(region);
+                item.sale.forEach(value => {
+                    let sale = document.createElement("td");
+                    sale.textContent = value.toString();
+                    row.appendChild(sale);
+                })
+                table.appendChild(row);
+            })
+            tableWrapper.innerHTML = "";
+            tableWrapper.appendChild(table);
+        }
+        initOptions();
+        updateTable();
+    </script>
+</body>
+
+</html>
